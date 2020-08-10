@@ -88,7 +88,11 @@ class Date(object):
         @rtype: B{datetime}.I{date}
 
         """
-        match_result = RE_DATE.match(value)
+        match_result = RE_DATETIME.match(value)
+
+        if match_result is None:
+            match_result = RE_DATE.match(value)
+
         if match_result is None:
             raise ValueError('date data has invalid format "%s"' % value)
 
